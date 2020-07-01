@@ -1,0 +1,344 @@
+﻿body {
+}
+
+
+
+.tried_recepie{
+    display:flex;
+    justify-content:center;
+
+    width:100%;
+    min-height:100vh;
+}
+
+.tried_recepie .tried_recepie_container{
+    width:100%;
+}
+
+
+.tried_recepie header{
+    min-height: 800px;
+    display:flex;
+    justify-content:center;
+    align-content:center;
+    align-items:center;
+
+    background-image:url(../Images/HeadBackground.svg);
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+
+}
+
+.tried_recepie .header_container{
+    width:100%;
+    max-width:700px;
+    height:500px;
+    border-radius: 0px;
+    background: #ffffff;
+
+}
+
+.tried_recepie .header_container .title{
+    text-align:center;
+    padding:2em 0 1em 0;
+}
+
+.tried_recepie .header_container .title h1{
+    letter-spacing:10px;
+    font-size:3em;
+    text-transform:uppercase;
+    font-weight:600;
+}
+
+.tried_recepie .header_container .description{
+    padding: 3em 3em 0 3em;
+    display:flex;
+}
+
+.tried_recepie .header_container .description p{
+    font-size:1.4rem;
+    line-height: 35px;
+    letter-spacing: 3px;
+}
+
+
+/*Add new recepie button */
+
+.tried_recepie .new_recepie_button_container{
+    display:flex;
+    justify-content:center;
+    margin-top: 13em;
+}
+
+.tried_recepie .new_recepie_button{
+    position:relative;
+    width:270px;
+    height: 270px;
+    border-radius: 9em;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    align-content:center;
+    transition: 0.5s box-shadow;
+    cursor:pointer;
+
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow:  13px 13px 28px #c7c7c7, 
+             -13px -13px 28px #ffffff;
+}
+
+.tried_recepie .new_recepie_button:hover{
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow:  -13px 13px 28px #c7c7c7, 
+             13px -13px 28px #ffffff;
+}
+
+.tried_recepie .new_recepie_button:focus{
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: inset -13px 13px 28px #c7c7c7, 
+            inset 13px -13px 28px #ffffff;
+}
+
+.tried_recepie .new_recepie_button p{
+    font-weight:600;
+    padding-top:0.5em;
+    text-transform:uppercase;
+    letter-spacing: 2px;
+    font-size:1.5rem;
+}
+
+.tried_recepie .new_recepie_button img{
+    width:100px;
+    height:100px;
+}
+
+.tried_recepie .img_m{
+    top:75px;
+    left: 85px;
+    position:absolute;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+.tried_recepie .new_recepie_button:hover .img1{
+    top: -140px;
+}
+
+.tried_recepie .new_recepie_button:hover .img2{
+    top: -90px;
+    left: 280px;
+}
+
+.tried_recepie .new_recepie_button:hover .img3{
+    left: 350px;
+}
+
+.tried_recepie .new_recepie_button:hover .img4{
+    top: 290px;
+    left: 280px;
+}
+
+.tried_recepie .new_recepie_button:hover .img5{
+    top: 350px;
+}
+
+.tried_recepie .new_recepie_button:hover .img6{
+    top: 290px;
+    left: -100px;
+}
+
+.tried_recepie .new_recepie_button:hover .img7{
+    left: -180px;
+}
+
+.tried_recepie .new_recepie_button:hover .img8{
+    left: -100px;
+    top: -90px;
+}
+
+/*End of new recepie button*/
+
+/*Best recepies*/
+.tried_recepie .best_recepies{
+    display:flex;
+    justify-content:center;
+    margin: 15em 0 5em 0;
+    background-color: black;
+    padding:3em 0;
+}
+
+.tried_recepie .best_recepies_container{
+    width:100%;
+    max-width:1200px;
+}
+
+.tried_recepie .best_recepies .title{
+    text-align:center;
+    margin-bottom: 3em;
+}
+
+.tried_recepie .best_recepies .title h2{
+    font-size:3rem;
+    color:white;
+    font-weight:700;
+    letter-spacing: 10px;
+}
+
+.tried_recepie .recepies_list{
+    width:100%;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.tried_recepie .recepies_list .recepie{
+    position:relative;
+}
+
+.tried_recepie .recepies_list .name{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+
+    display:flex;
+    justify-content:center;
+    align-content:center;
+    align-items:center;
+
+    cursor:pointer;
+    transition: 0.5s;
+
+    background-color:rgba(0, 0, 0, 0.40);
+}
+
+.tried_recepie .recepies_list .name p{
+    color:white;
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing:3px;
+    display:block;
+    text-align:center;
+}
+
+.tried_recepie .recepies_list .name p i{
+    font-size: 2rem;
+}
+
+.tried_recepie .recepies_list .name:hover{
+    background-color:rgba(0, 0, 0, 0.0);
+}
+
+.tried_recepie .recepies_list img{
+    width:100%;
+    height:470px;
+}
+
+.tried_recepie .open_all{
+    text-align:center;
+    padding: 2em 0;
+}
+
+.tried_recepie .open_all button{
+    background-color:unset;
+    border:unset;
+    font-size: 1.3em;
+    color:white;
+    letter-spacing:6px;
+    font-weight:800;
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+.tried_recepie .open_all button:hover{
+    letter-spacing:15px;
+    transform: translateY(-5px);
+}
+
+/*End of bes recepies*/
+
+
+/*Ongoing recepies*/
+
+.tried_recepie .ongoing_recepies{
+    display:flex;
+    justify-content:center;
+    margin:5em 0 5em 0;
+    padding:3em 0;
+}
+
+.tried_recepie .ongoing_recepies_container{
+    width:100%;
+    max-width:800px;
+}
+
+.tried_recepie .ongoing_recepies .title{
+    text-align:center;
+    margin-bottom: 3em;
+}
+
+.tried_recepie .ongoing_recepies .title h2{
+    font-size:3rem;
+    font-weight:700;
+    letter-spacing: 10px;
+}
+
+
+.tried_recepie .ongoing_recepies .recepies_list img{
+    width:100%;
+    height:300px;
+}
+
+.tried_recepie .ongoing_recepies .open_all button{
+    color:black;
+    transition: 0.5s;
+}
+
+/*End of ongoing recepies*/
+
+/*Abandoned Recepies*/
+
+
+.tried_recepie .abandoned_recepies{
+    display:flex;
+    justify-content:center;
+    margin:5em 0 0 0;
+    padding:3em 0;
+    background-color: black;
+}
+
+.tried_recepie .abandoned_recepies_container{
+    width:100%;
+    max-width:1200px;
+}
+
+.tried_recepie .abandoned_recepies .title{
+    text-align:center;
+    margin-bottom: 3em;
+}
+
+.tried_recepie .abandoned_recepies .title h2{
+    font-size:3rem;
+    font-weight:700;
+    color:white;
+    letter-spacing: 10px;
+}
+
+.tried_recepie .abandoned_recepies .recepies_list{
+    width:100%;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.tried_recepie .abandoned_recepies .recepies_list img{
+    width:100%;
+    height:200px;
+}
+
+/*End of abandoned recepies*/

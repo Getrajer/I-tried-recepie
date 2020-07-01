@@ -1,0 +1,327 @@
+﻿@page "/"
+
+@inherits ICreatedRecepieBase
+
+<head>
+    <link href="../css/index_style.css" rel="stylesheet" />
+</head>
+
+@if (main_page == true)
+{
+    <section class="tried_recepie">
+        <div class="tried_recepie_container">
+
+            <header class="header">
+                <div class="header_container">
+                    <div class="title">
+                        <h1>I tried recepie</h1>
+                    </div>
+
+                    <div class="description">
+                        <p>Vaush, you've actually changed my mind on 2 things, hormone blockers and the legitimacy of considering non-binary people as trans. You've made strong arguments backed by evidence and I've had no choice but to concede my earlier held beliefs.</p>
+                    </div>
+                </div>
+            </header>
+
+
+            <section class="new_recepie_button_container">
+
+                <div @onclick="OpenCreateRecepiePage" class="new_recepie_button">
+                    <p>Create Recepie</p>
+
+
+                    <div class="img_m img1">
+                        <img src="../Images/1.png" />
+                    </div>
+
+                    <div class="img_m img2">
+                        <img src="../Images/2.png" />
+                    </div>
+
+                    <div class="img_m img3">
+                        <img src="../Images/3.png" />
+                    </div>
+
+                    <div class="img_m img4">
+                        <img src="../Images/4.png" />
+                    </div>
+
+                    <div class="img_m img5">
+                        <img src="../Images/5.png" />
+                    </div>
+
+                    <div class="img_m img6">
+                        <img src="../Images/6.png" />
+                    </div>
+
+                    <div class="img_m img7">
+                        <img src="../Images/7.png" />
+                    </div>
+
+                    <div class="img_m img8">
+                        <img src="../Images/8.png" />
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="best_recepies">
+                <div class="best_recepies_container">
+
+                    <div class="title">
+                        <h2>Finished Recepies</h2>
+                    </div>
+
+                    <div class="recepies_list">
+
+                        <div class="recepie">
+                            <div class="name">
+                                <div>
+                                    <p>Recepie Name</p>
+                                    <p><i class="fas fa-hamburger"></i></p>
+                                </div>
+                            </div>
+
+                            <div class="img_container">
+                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
+                            </div>
+
+                        </div>
+
+                        <div class="recepie">
+                            <div class="name">
+                                <p>Recepie Name</p>
+                            </div>
+
+                            <div class="img_container">
+                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
+                            </div>
+
+                        </div>
+
+                        <div class="recepie">
+                            <div class="name">
+                                <p>Recepie Name</p>
+                            </div>
+
+                            <div class="img_container">
+                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="open_all">
+                        <button>See all</button>
+                    </div>
+
+                </div>
+            </section>
+
+
+
+            <section class="ongoing_recepies">
+                <div class="ongoing_recepies_container">
+
+                    <div class="title">
+                        <h2>Ongoing Recepies</h2>
+                    </div>
+
+                    <div class="recepies_list">
+
+                        <div class="recepie">
+                            <div class="name">
+                                <div>
+                                    <p>Recepie Name</p>
+                                    <p><i class="fas fa-hamburger"></i></p>
+                                </div>
+                            </div>
+
+                            <div class="img_container">
+                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
+                            </div>
+
+                        </div>
+
+                        <div class="recepie">
+                            <div class="name">
+                                <p>Recepie Name</p>
+                            </div>
+
+                            <div class="img_container">
+                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
+                            </div>
+
+                        </div>
+
+                        <div class="recepie">
+                            <div class="name">
+                                <p>Recepie Name</p>
+                            </div>
+
+                            <div class="img_container">
+                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
+                            </div>
+
+                        </div>
+
+
+                        <div class="recepie">
+                            <div class="name">
+                                <div>
+                                    <p>Recepie Name</p>
+                                    <p><i class="fas fa-hamburger"></i></p>
+                                </div>
+                            </div>
+
+                            <div class="img_container">
+                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
+                            </div>
+
+                        </div>
+
+                        <div class="recepie">
+                            <div class="name">
+                                <p>Recepie Name</p>
+                            </div>
+
+                            <div class="img_container">
+                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
+                            </div>
+
+                        </div>
+
+                        <div class="recepie">
+                            <div class="name">
+                                <p>Recepie Name</p>
+                            </div>
+
+                            <div class="img_container">
+                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="open_all">
+                        <button>See all</button>
+                    </div>
+
+                </div>
+            </section>
+
+
+
+            <section class="abandoned_recepies">
+                <div class="abandoned_recepies_container">
+
+                    <div class="title">
+                        <h2>Abandoned Recepies</h2>
+                    </div>
+
+                    <div class="recepies_list">
+
+                        <div class="recepie">
+                            <div class="name">
+                                <div>
+                                    <p>Recepie Name</p>
+                                    <p><i class="fas fa-hamburger"></i></p>
+                                </div>
+                            </div>
+
+                            <div class="img_container">
+                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
+                            </div>
+
+                        </div>
+
+                        <div class="recepie">
+                            <div class="name">
+                                <p>Recepie Name</p>
+                            </div>
+
+                            <div class="img_container">
+                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
+                            </div>
+
+                        </div>
+
+                        <div class="recepie">
+                            <div class="name">
+                                <p>Recepie Name</p>
+                            </div>
+
+                            <div class="img_container">
+                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
+                            </div>
+
+                        </div>
+
+
+                        <div class="recepie">
+                            <div class="name">
+                                <div>
+                                    <p>Recepie Name</p>
+                                    <p><i class="fas fa-hamburger"></i></p>
+                                </div>
+                            </div>
+
+                            <div class="img_container">
+                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
+                            </div>
+
+                        </div>
+
+                        <div class="recepie">
+                            <div class="name">
+                                <p>Recepie Name</p>
+                            </div>
+
+                            <div class="img_container">
+                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
+                            </div>
+
+                        </div>
+
+                        <div class="recepie">
+                            <div class="name">
+                                <p>Recepie Name</p>
+                            </div>
+
+                            <div class="img_container">
+                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="open_all">
+                        <button>See all</button>
+                    </div>
+
+                </div>
+            </section>
+
+
+        </div>
+    </section>
+}
+
+
+@if(create_recepie_page == true)
+{
+    <section class="create_recepie">
+        <div class="create_recepie_container">
+            Recepie
+        </div>
+    </section>
+}
+
+
+
+
