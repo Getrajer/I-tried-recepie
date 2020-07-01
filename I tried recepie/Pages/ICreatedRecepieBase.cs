@@ -13,8 +13,39 @@ namespace I_tried_recepie.Pages
         {
             public int Id { get; set; }
             public string Name { get; set; }
+            public string Description { get; set; }
 
+            /// <summary>
+            /// Each number will idicate type for the icon: 
+            /// 1 - Breakfast
+            /// 2 - Lunch
+            /// 3 - Dinner
+            /// 4 - Dessert
+            /// 5 - Snack
+            /// </summary>
+            public int Type { get; set; }
+
+            /// <summary>
+            /// From 1 - 10
+            /// </summary>
             public int Rating { get; set; }
+
+            public string Comment { get; set; }
+
+            /// <summary>
+            /// If user is satisfied with the end result
+            /// </summary>
+            public bool Finished { get; set; }
+
+            /// <summary>
+            /// If user is still working on perfecting the recepie
+            /// </summary>
+            public bool Ongoing { get; set; }
+
+            /// <summary>
+            /// If user thinks there is no home in this recepie
+            /// </summary>
+            public bool Abandon { get; set; }
 
             public List<Image> RecepieImages = new List<Image>();
             public List<DescriptionProcess> DescriptionsList = new List<DescriptionProcess>();
