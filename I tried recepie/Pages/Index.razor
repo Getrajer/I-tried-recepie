@@ -327,17 +327,64 @@
 
                     <div class="input_container">
                         <label>Reciepe name</label>
-                        <input placeholder="Name"/>
+                        <input @bind="new_recepie_name" placeholder="Name" />
                     </div>
 
                     <div class="input_container">
                         <label>Description</label>
-                        <textarea placeholder="Short overall description"></textarea>
+                        <textarea @bind="new_recepie_description" placeholder="Short overall description"></textarea>
                     </div>
 
                     <div class="input_container">
-                        <label>Rate how you liked it</label>
-                        <input placeholder="From 1-10"/>
+                        <label>Your Rating<span class="small">(How you liked this dish)</span></label>
+                    </div>
+
+                    <div class="rating_container">
+                        @foreach (var r in ratings)
+                        {
+                            <div class="rating">
+                                <button @onclick="@(e => ChangeRating(r.RatePoint))" class="@r.Class">@r.RatePoint</button>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="input_container">
+                        <label>Type of food<span class="small">(Breakfast | Lunch | Dinner | Dessert | Snack)</span></label>
+                    </div>
+
+                    <div class="rating_container">
+                        @foreach (var t in types)
+                        {
+                            <div class="rating">
+                                <button @onclick="@(e => ChangeType(t.TypeNumber))" class="@t.Class">
+                                    @if (t.TypeNumber == 0)
+                                    {
+                                        <i class="fas fa-bacon"></i>
+                                    }
+                                    else if (t.TypeNumber == 1)
+                                    {
+                                        <i class="fas fa-utensils"></i>
+                                    }
+                                    else if (t.TypeNumber == 2)
+                                    {
+                                        <i class="fas fa-pizza-slice"></i>
+                                    }
+                                    else if (t.TypeNumber == 3)
+                                    {
+                                        <i class="fas fa-ice-cream"></i>
+                                    }
+                                    else if (t.TypeNumber == 4)
+                                    {
+                                        <i class="fas fa-apple-alt"></i>
+                                    }
+                                </button>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="input_container">
+                        <label>Rate how you liked it (1-10)</label>
+                        <input @bind="creator_recepie_rating" min="0" max="10" placeholder="From 1-10" />
                     </div>
 
                     <div class="ingredients">
@@ -345,25 +392,29 @@
                             <h3>Ingredients</h3>
                         </div>
 
-                        <div class="ingredient">
-                            <div class="input_container">
-                                <label>Name</label>
-                                <input placeholder="Ex beef/salt" />
-                            </div>
+                        @foreach (var i in ingredients)
+                        {
+                            <div class="ingredient">
+                                <div class="input_container">
+                                    <label>Name</label>
+                                    <input @bind="i.Name" placeholder="Ex beef/salt" />
+                                </div>
 
-                            <div class="input_container">
-                                <label>Ammount</label>
-                                <input placeholder="Ex 250/1" />
-                            </div>
+                                <div class="input_container">
+                                    <label>Ammount</label>
+                                    <input min="0" @bind="i.Ammount" placeholder="Ex 250/1" />
+                                </div>
 
-                            <div class="input_container">
-                                <label>Ammount Name</label>
-                                <input placeholder="Ex grams/spoons" />
+                                <div class="input_container">
+                                    <label>Ammount Name</label>
+                                    <input @bind="i.AmmountName" placeholder="Ex grams/spoons" />
+                                </div>
                             </div>
-                        </div>
+                        }
+
 
                         <div class="button_container">
-                            <button>Add next</button>
+                            <button @onclick="AddNewIngredient">Add next</button>
                         </div>
                     </div>
 
@@ -374,57 +425,67 @@
 
                         <div class="creation_process_container">
 
-                            <div class="step">
-                                <h4>Step 1</h4>
+                            @foreach (var s in steps)
+                            {
+                                <div class="step">
+                                    <h4>Step @(s.Id + 1)</h4>
 
-                                <div class="input_time">
-                                    <div class="input_container">
-                                        <label>Time</label>
-                                        <input />
+                                    <div class="input_time">
+                                        <div class="input_container">
+                                            <label>Time</label>
+                                            <input @bind="s.Time" />
+                                        </div>
+
+                                        <div class="input_container">
+                                            <label>Time name(Ex min/hrs)</label>
+                                            <input @bind="s.Name" />
+                                        </div>
                                     </div>
 
                                     <div class="input_container">
-                                        <label>Time name(Ex min/hrs)</label>
-                                        <input />
+                                        <label>Description</label>
+                                        <textarea @bind="s.Text" placeholder="Step 1 description"></textarea>
+                                    </div>
+                                    <div class="button_container">
+                                        <button @onclick="AddNewStep">Add next step</button>
                                     </div>
                                 </div>
-
-                                <div class="input_container">
-                                    <label>Description</label>
-                                    <textarea placeholder="Step 1 description"></textarea>
-                                </div>
-                                <div class="button_container">
-                                    <button>Add next step</button>
-                                </div>
-                            </div>
-
+                            }
                         </div>
                     </div>
 
 
                     <div class="add_images">
 
-                        <div class="image_input">
-                            <div class="input_container">
-                                <label>Path</label>
-                                <input />
+                        @foreach (var i in images)
+                        {
+                            <div class="image_input">
+                                <div class="input_container">
+                                    <label>Path</label>
+                                    <input @bind="i.Path" />
+                                    <label class="small">Put link to image/In normal implementation you can put img from drive</label>
+                                </div>
+
+                                <div class="input_container">
+                                    <label>Name</label>
+                                    <input @bind="i.Name" />
+                                </div>
+
+                                <div class="preview">
+                                    <img src="@i.Path" alt="@i.Name" />
+                                </div>
+
+
                             </div>
-
-                            <div class="input_container">
-                                <label>Name</label>
-                                <input />
+                            <div class="button_container">
+                                <button @onclick="AddNewImage">Add Next</button>
                             </div>
+                        }
 
-                            <div class="preview">
-                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
-                            </div>
+                    </div>
 
-
-                        </div>
-                        <div class="button_container">
-                            <button>Add Next</button>
-                        </div>
-
+                    <div class="button_container add_new_button">
+                        <button>Add new recepie</button>
                     </div>
 
                 </div>

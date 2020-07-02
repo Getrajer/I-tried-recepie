@@ -417,7 +417,6 @@ label, textarea, p, h1, h2, h3, h4, h5, input{
 
 .create_recepie .input_container textarea{
     width:100%;
-    text-align:center;
     padding:0.5em;
     margin:0.3em 0;
     border:unset;
@@ -456,7 +455,7 @@ label, textarea, p, h1, h2, h3, h4, h5, input{
 .create_recepie .ingredient {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 5px;
+    grid-gap:10px;
 }
 
 .create_recepie h4{
@@ -469,20 +468,43 @@ label, textarea, p, h1, h2, h3, h4, h5, input{
     font-weight:600;
 }
 
-.create_recepie .step{
-    margin-bottom:1em;
+.create_recepie .rating_container{
+    display:flex;
+    justify-content:space-around;
+    padding:0.5em 0;
+}
+
+.create_recepie .rating_container button {
+    border-radius: unset;
+    padding: 0.3em 0.4em;
+    font-weight: 600;
+    border: 1px solid rgb(46, 46, 46);
+    background-color: unset;
+}
+
+.create_recepie .rating_container .checked_rating{
+    background-color:black;
+    color:white;
+}
+
+.create_recepie button:focus {
+    outline: unset;
+}
+
+.create_recepie .step {
+    margin-bottom: 1em;
 }
 
 .create_recepie .input_time{
     display:grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 5px;
+    grid-gap:10px;
 }
 
 .create_recepie .image_input{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap:5px;
+    grid-gap:10px;
 }
 
 .create_recepie .preview{
@@ -493,6 +515,21 @@ label, textarea, p, h1, h2, h3, h4, h5, input{
 .create_recepie .preview img{
     width:80px;
     height:80px;
+}
+
+.create_recepie .small{
+    font-size:0.6rem;
+    letter-spacing: 0px;
+}
+
+.create_recepie .add_new_button{
+    text-align:center;
+    margin-top: 2em;
+}
+
+.create_recepie .add_new_button button{
+    font-size:1.5rem;
+    font-weight:700;
 }
 
 /*End of new reciepe*/
