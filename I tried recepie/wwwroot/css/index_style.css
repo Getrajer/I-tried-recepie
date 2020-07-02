@@ -364,7 +364,7 @@ label, textarea, p, h1, h2, h3, h4, h5, input{
     max-width: 700px;
     padding: 1em 0.5em;
     background: #ffffff;
-    box-shadow:  8px 8px 3px #ababab, 
+    box-shadow:  8px 8px 3px #c7c7c7, 
              -3px -3px 3px #f7f7f7;
 }
 
@@ -406,13 +406,14 @@ label, textarea, p, h1, h2, h3, h4, h5, input{
     border-radius: unset;
     background-color:#f8f8f8;
     border-bottom: 1px solid rgb(65, 65, 65);
-    transition: 0.5s;
+    transition: 0.5s background-color;
 }
 
 .create_recepie .input_container input:focus{
     border: unset;
     outline:unset;
     border-bottom: 1px solid rgb(46, 46, 46);
+    background-color:unset;
 }
 
 .create_recepie .input_container textarea{
@@ -422,6 +423,7 @@ label, textarea, p, h1, h2, h3, h4, h5, input{
     border:unset;
     border-radius: unset;
     background-color:#f8f8f8;
+    transition: 0.5s background-color;
     border-bottom: 1px solid rgb(65, 65, 65);
 }
 
@@ -429,6 +431,7 @@ label, textarea, p, h1, h2, h3, h4, h5, input{
     border: unset;
     outline:unset;
     border-bottom: 1px solid rgb(46, 46, 46);
+    background-color:unset;
 }
 
 .create_recepie .button_container{
@@ -443,7 +446,12 @@ label, textarea, p, h1, h2, h3, h4, h5, input{
     font-weight:600;
     border:1px solid rgb(46, 46, 46);
     background-color:unset;
+    transition: 0.5s background-color;
+}
 
+.create_recepie .button_container button:hover{
+    background-color:black;
+    color:white;
 }
 
 .create_recepie .ingredients{
@@ -499,6 +507,10 @@ label, textarea, p, h1, h2, h3, h4, h5, input{
     display:grid;
     grid-template-columns: 1fr 1fr;
     grid-gap:10px;
+}
+
+.create_recepie .add_images{
+    padding: 1em 0;
 }
 
 .create_recepie .image_input{

@@ -5,4 +5,8 @@
     <RootNamespace>I_tried_recepie</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Data\" />
+  </ItemGroup>
+
 </Project>

@@ -18,7 +18,10 @@
                     </div>
 
                     <div class="description">
-                        <p>Vaush, you've actually changed my mind on 2 things, hormone blockers and the legitimacy of considering non-binary people as trans. You've made strong arguments backed by evidence and I've had no choice but to concede my earlier held beliefs.</p>
+                        @foreach(var l in lines)
+                        {
+                            <p>@l</p>
+                        }
                     </div>
                 </div>
             </header>
@@ -446,11 +449,12 @@
                                         <label>Description</label>
                                         <textarea @bind="s.Text" placeholder="Step 1 description"></textarea>
                                     </div>
-                                    <div class="button_container">
-                                        <button @onclick="AddNewStep">Add next step</button>
-                                    </div>
                                 </div>
                             }
+
+                            <div class="button_container">
+                                <button @onclick="AddNewStep">Add next step</button>
+                            </div>
                         </div>
                     </div>
 
@@ -477,10 +481,12 @@
 
 
                             </div>
-                            <div class="button_container">
-                                <button @onclick="AddNewImage">Add Next</button>
-                            </div>
+
                         }
+
+                        <div class="button_container">
+                            <button @onclick="AddNewImage">Add Next</button>
+                        </div>
 
                     </div>
 

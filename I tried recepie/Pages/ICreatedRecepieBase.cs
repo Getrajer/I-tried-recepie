@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,6 +10,9 @@ namespace I_tried_recepie.Pages
 {
     public class ICreatedRecepieBase : ComponentBase
     {
+        [Inject]
+        IJSRuntime JSRuntime { get; set; }
+
         #region UserRecepie
         public class UserRecepies
         {
@@ -139,8 +144,8 @@ namespace I_tried_recepie.Pages
         #endregion
 
         #region Functions and variables for toglleying websites
-        protected bool main_page = false;
-        protected bool create_recepie_page = true;
+        protected bool main_page = true;
+        protected bool create_recepie_page = false;
 
 
         /// <summary>
@@ -150,6 +155,8 @@ namespace I_tried_recepie.Pages
         {
             main_page = false;
             create_recepie_page = false;
+
+            ScrollTop();
         }
 
         /// <summary>
@@ -319,6 +326,7 @@ namespace I_tried_recepie.Pages
 
 
         #endregion
+        protected List<string> lines = new List<string>();
 
 
         protected override async Task OnInitializedAsync()
@@ -376,6 +384,21 @@ namespace I_tried_recepie.Pages
             types.Add(t3);
             types.Add(t4);
             types.Add(t5);
+
+            Recepie example_recepie = new Recepie();
+
+            string FilePath = Path.GetFullPath(@"wwwroot\Data\images_food_read.csv");
+
+            lines = File.ReadAllLines(FilePath).ToList();
         }
+
+
+        #region Help Functions
+        private async Task ScrollTop()
+        {
+            await JSRuntime.InvokeAsync<string>("ScrollTopJS");
+
+        }
+        #endregion
     }
 }
