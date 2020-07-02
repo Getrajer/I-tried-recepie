@@ -1,8 +1,14 @@
-﻿body {
+﻿*{
+    margin:0;
+    padding:0;
 }
 
+label, textarea, p, h1, h2, h3, h4, h5, input{
+    margin:0;
+    padding:0;
+}
 
-
+/*Main page*/
 .tried_recepie{
     display:flex;
     justify-content:center;
@@ -342,3 +348,151 @@
 }
 
 /*End of abandoned recepies*/
+/*End of main page*/
+
+/*New reciepe*/
+.create_recepie{
+    display:flex;
+    justify-content:center;
+    min-height:100vh;
+    width:100%;
+    padding: 3em 0;
+}
+
+.create_recepie .create_recepie_container{
+    width:100%;
+    max-width: 700px;
+    padding: 1em 0.5em;
+    background: #ffffff;
+    box-shadow:  8px 8px 3px #ababab, 
+             -3px -3px 3px #f7f7f7;
+}
+
+.create_recepie .title{
+    text-align:center;
+    padding:1em 0;
+}
+
+.create_recepie .title h2{
+    font-size: 3rem;
+    font-weight:700;
+    letter-spacing:5px;
+
+}
+
+.create_recepie .reciepie_form{
+    display:flex;
+    justify-content:center;
+}
+
+.create_recepie .reciepie_form_container{
+    width:100%;
+    max-width:500px;
+}
+
+.create_recepie .input_container label{
+    display:block;
+    padding:0.3em 0;
+    font-weight:700;
+    letter-spacing:3px;
+}
+
+.create_recepie .input_container input{
+    width:100%;
+    text-align:center;
+    padding:0.5em;
+    margin:0.3em 0;
+    border:unset;
+    border-radius: unset;
+    background-color:#f8f8f8;
+    border-bottom: 1px solid rgb(65, 65, 65);
+    transition: 0.5s;
+}
+
+.create_recepie .input_container input:focus{
+    border: unset;
+    outline:unset;
+    border-bottom: 1px solid rgb(46, 46, 46);
+}
+
+.create_recepie .input_container textarea{
+    width:100%;
+    text-align:center;
+    padding:0.5em;
+    margin:0.3em 0;
+    border:unset;
+    border-radius: unset;
+    background-color:#f8f8f8;
+    border-bottom: 1px solid rgb(65, 65, 65);
+}
+
+.create_recepie .input_container textarea:focus{
+    border: unset;
+    outline:unset;
+    border-bottom: 1px solid rgb(46, 46, 46);
+}
+
+.create_recepie .button_container{
+    padding: 0.5em 0;
+    width:100%;
+    text-align:right;
+}
+
+.create_recepie .button_container button{
+    border-radius:unset;
+    padding:0.3em 0.2em;
+    font-weight:600;
+    border:1px solid rgb(46, 46, 46);
+    background-color:unset;
+
+}
+
+.create_recepie .ingredients{
+    border-top: 23px solid rgb(237, 237, 237);
+    border-bottom: 23px solid rgb(237, 237, 237);
+    margin: 1em 0;
+}
+
+.create_recepie .ingredient {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 5px;
+}
+
+.create_recepie h4{
+    text-align:center;
+    margin:0.5em 0;
+    text-transform:uppercase;
+    font-size:1.3rem;
+    height:23px;
+    letter-spacing:5px;
+    font-weight:600;
+}
+
+.create_recepie .step{
+    margin-bottom:1em;
+}
+
+.create_recepie .input_time{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+}
+
+.create_recepie .image_input{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap:5px;
+}
+
+.create_recepie .preview{
+    display:flex;
+    justify-content:flex-end;
+}
+
+.create_recepie .preview img{
+    width:80px;
+    height:80px;
+}
+
+/*End of new reciepe*/

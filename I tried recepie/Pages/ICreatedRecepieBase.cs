@@ -67,7 +67,6 @@ namespace I_tried_recepie.Pages
             public Ingredient() { }
         }
         #endregion
-
         #region DescriptionProcess class
         public class DescriptionProcess
         {
