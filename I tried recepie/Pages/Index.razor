@@ -18,14 +18,15 @@
                     </div>
 
                     <div class="description">
-                        @foreach(var l in lines)
-                        {
-                            <p>@l</p>
-                        }
+                        <p>Vaush, you've actually changed my mind on 2 things, hormone blockers and the legitimacy of considering non-binary people as trans. You've made strong arguments backed by evidence and I've had no choice but to concede my earlier held beliefs.</p>
                     </div>
                 </div>
             </header>
 
+            @foreach(var n in Recepies[0].IngredientsList)
+            {
+                <p>@n.Name</p>
+            }
 
             <section class="new_recepie_button_container">
 
@@ -123,7 +124,6 @@
 
                 </div>
             </section>
-
 
 
             <section class="ongoing_recepies">

@@ -326,7 +326,7 @@ namespace I_tried_recepie.Pages
 
 
         #endregion
-        protected List<string> lines = new List<string>();
+        protected List<string> lines_recepies = new List<string>();
 
 
         protected override async Task OnInitializedAsync()
@@ -385,11 +385,198 @@ namespace I_tried_recepie.Pages
             types.Add(t4);
             types.Add(t5);
 
-            Recepie example_recepie = new Recepie();
+            //Load sample data
 
-            string FilePath = Path.GetFullPath(@"wwwroot\Data\images_food_read.csv");
+            //Load recepies objects
+            string FilePath = Path.GetFullPath(@"wwwroot\Data\RecepiesData.txt");
+            lines_recepies = File.ReadAllLines(FilePath).ToList();
 
-            lines = File.ReadAllLines(FilePath).ToList();
+            //Create instances
+            int number_of_objects = lines_recepies.Count / 8;
+            for(int i = 0; i < number_of_objects; i++)
+            {
+                Recepie r = new Recepie();
+                Recepies.Add(r);
+            }
+
+            //Fill instances with data
+            int counter = 0;
+            int id = 0;
+            for (int i = 0; i < lines_recepies.Count; i++)
+            {
+                if(counter == 0)
+                {
+                    Recepies[id].Name = lines_recepies[i];
+                }
+
+                if(counter == 1)
+                {
+                    Recepies[id].Description = lines_recepies[i];
+                }
+
+                if(counter == 2)
+                {
+                    Recepies[id].Type = Convert.ToInt32(lines_recepies[i]);
+                }
+
+                if(counter == 3)
+                {
+                    Recepies[id].Rating = Convert.ToInt32(lines_recepies[i]);
+                }
+
+                if(counter == 4)
+                {
+                    if(lines_recepies[i] == "T")
+                    {
+                        Recepies[id].Abandon = true;
+                    }
+                    else
+                    {
+                        Recepies[id].Abandon = false;
+                    }
+                }
+
+                if (counter == 5)
+                {
+                    if (lines_recepies[i] == "T")
+                    {
+                        Recepies[id].Finished = true;
+                    }
+                    else
+                    {
+                        Recepies[id].Finished = false;
+                    }
+                }
+
+                if (counter == 6)
+                {
+                    if (lines_recepies[i] == "T")
+                    {
+                        Recepies[id].Ongoing = true;
+                    }
+                    else
+                    {
+                        Recepies[id].Ongoing = false;
+                    }
+                }
+
+                if(counter == 7)
+                {
+                    id++;
+                    counter = 0;
+                }
+
+                if(lines_recepies[i] != "END")
+                {
+                    counter++;
+                }
+            }
+
+            //Load photos objects
+            string FilePath2 = Path.GetFullPath(@"wwwroot\Data\ImagesFoodData.txt");
+            List<string> lines_photos = new List<string>();
+            lines_photos = File.ReadAllLines(FilePath2).ToList();
+
+            id = 0;
+            counter = 0;
+            //Add Photos to the list
+            for(int i = 0; i < lines_photos.Count; i++)
+            {
+                if(counter == 0)
+                {
+                    Image image = new Image();
+                    Recepies[id].RecepieImages.Add(image);
+                    Recepies[id].RecepieImages[Recepies[id].RecepieImages.Count - 1].Id = Recepies[id].RecepieImages.Count - 1;
+                    Recepies[id].RecepieImages[Recepies[id].RecepieImages.Count - 1].Path = lines_photos[i];
+                }
+
+                if(counter == 1)
+                {
+                    Recepies[id].RecepieImages[Recepies[id].RecepieImages.Count - 1].Name = lines_photos[i];
+                }
+
+                if(counter == 2)
+                {
+                    counter = 0;
+                }
+
+                if(lines_photos[i] != "END")
+                {
+                    counter++;
+                }
+
+                if (lines_photos[i] == "END")
+                {
+                    id++;
+                }
+            }
+
+            //Load steps objects
+            string FilePath3 = Path.GetFullPath(@"wwwroot\Data\StepsData.txt");
+            List<string> lines_steps = new List<string>();
+            lines_steps = File.ReadAllLines(FilePath3).ToList();
+
+            id = 0;
+            counter = 0;
+            for(int i = 0; i < lines_steps.Count; i++)
+            {
+                if(lines_steps[i] != "END")
+                {
+                    DescriptionProcess d = new DescriptionProcess();
+                    Recepies[id].DescriptionsList.Add(d);
+                    Recepies[id].DescriptionsList[Recepies[id].DescriptionsList.Count - 1].Id = Recepies[id].DescriptionsList.Count - 1;
+                    Recepies[id].DescriptionsList[Recepies[id].DescriptionsList.Count - 1].Text = lines_steps[i];
+                }
+                else
+                {
+                    id++;
+                }
+            }
+
+            //Load ingrediends objects
+            string FilePath4 = Path.GetFullPath(@"wwwroot\Data\IngredientsData.txt");
+            List<string> lines_ingredients = new List<string>();
+            lines_ingredients = File.ReadAllLines(FilePath4).ToList();
+
+            id = 0;
+            counter = 0;
+
+            for(int i = 0; i < lines_ingredients.Count; i++)
+            {
+                if(counter == 0 && lines_ingredients[i] != "END")
+                {
+                    Ingredient ingr = new Ingredient();
+                    Recepies[id].IngredientsList.Add(ingr);
+                    Recepies[id].IngredientsList[Recepies[id].IngredientsList.Count - 1].Id = Recepies[id].IngredientsList.Count - 1;
+                    Recepies[id].IngredientsList[Recepies[id].IngredientsList.Count - 1].Name = lines_ingredients[i];
+                    
+                }
+
+                if(counter == 1 && lines_ingredients[i] != "END")
+                {
+                    Recepies[id].IngredientsList[Recepies[id].IngredientsList.Count - 1].Ammount = Convert.ToDouble(lines_ingredients[i]);
+                }
+
+                if(counter == 2 && lines_ingredients[i] != "END")
+                {
+                    Recepies[id].IngredientsList[Recepies[id].IngredientsList.Count - 1].AmmountName = lines_ingredients[i];
+                }
+
+                if(lines_ingredients[i] != "END" && counter != 2)
+                {
+                    counter++;
+
+                }
+                else if(lines_ingredients[i] != "END" && counter == 2)
+                {
+                    counter = 0;
+                }
+
+                if(lines_ingredients[i] == "END")
+                {
+                    id++;
+                }
+            }
         }
 
 
