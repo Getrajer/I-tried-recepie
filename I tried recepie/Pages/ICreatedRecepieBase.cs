@@ -144,9 +144,9 @@ namespace I_tried_recepie.Pages
         #endregion
 
         #region Functions and variables for toglleying websites
-        protected bool main_page = false;
+        protected bool main_page = true;
         protected bool create_recepie_page = false;
-        protected bool display_recepie_page = true;
+        protected bool display_recepie_page = false;
 
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace I_tried_recepie.Pages
         {
             main_page = false;
             create_recepie_page = false;
-            display_recepie_page = true;
+            display_recepie_page = false;
 
             ScrollTop();
         }
@@ -243,6 +243,11 @@ namespace I_tried_recepie.Pages
         /// This List will store types of which food is
         /// </summary>
         protected List<Type> types = new List<Type>();
+
+        /// <summary>
+        /// Latest 6 ongoing recepies of the user displayed in main window
+        /// </summary>
+        protected List<Recepie> latest_6_ongoing_recepies = new List<Recepie>();
 
         /// <summary>
         /// Will reset variables for input
@@ -602,6 +607,25 @@ namespace I_tried_recepie.Pages
 
             current_recepie = Recepies[0];
             current_recepie_image = Recepies[0].RecepieImages[0];
+
+            //Load 6 latest ongoing recepies
+            counter = 0;
+            if(Recepies.Count > 0)
+            {
+                for(int i = Recepies.Count; i != 0; i--)
+                {
+                    if (counter == 6)
+                    {
+                        break;
+                    }
+
+                    if (Recepies[i - 1].Ongoing == true)
+                    {
+                        latest_6_ongoing_recepies.Add(Recepies[i - 1]);
+                        counter++;
+                    }
+                }
+            }
         }
 
 

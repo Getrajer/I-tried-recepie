@@ -548,11 +548,21 @@ label, textarea, p, h1, h2, h3, h4, h5, input{
 
 /*Single recepie display*/
 .single_recepie {
-    display: flex;
-    justify-content: center;
+
     width: 100%;
     min-height: 100vh;
-    padding-top: 5em;
+    background-image: url(../Images/single_food_background.jpg);
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+}
+
+.single_recepie_background_cover {
+    background-color: rgba(0, 0, 0, 0.50);
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
 }
 
 .single_recepie .single_recepie_container{
@@ -667,6 +677,7 @@ label, textarea, p, h1, h2, h3, h4, h5, input{
 
 .single_recepie .methods{
     padding:1em 2em;
+    background-color:white;
 }
 
 .single_recepie .methods .title{

@@ -23,11 +23,6 @@
                 </div>
             </header>
 
-            @foreach (var n in Recepies[0].IngredientsList)
-            {
-                <p>@n.Name</p>
-            }
-
             <section class="new_recepie_button_container">
 
                 <div @onclick="OpenCreateRecepiePage" class="new_recepie_button">
@@ -135,78 +130,47 @@
 
                     <div class="recepies_list">
 
-                        <div class="recepie">
-                            <div class="name">
-                                <div>
-                                    <p>Recepie Name</p>
-                                    <p><i class="fas fa-hamburger"></i></p>
+                        @if (latest_6_ongoing_recepies.Count > 0)
+                        {
+                            @foreach (var r in latest_6_ongoing_recepies)
+                            {
+                                <div @onclick="@(e => OpenRecepiePage(r.Id))" class="recepie">
+                                    <div class="name">
+                                        <div>
+                                            <p>@r.Name</p>
+                                            @if (r.Type == 1)
+                                            {
+                                                <p><i class="fas fa-bacon"></i></p>
+                                            }
+
+                                            @if (r.Type == 2)
+                                            {
+                                                <p><i class="fas fa-utensils"></i></p>
+                                            }
+
+                                            @if (r.Type == 3)
+                                            {
+                                                <p><i class="fas fa-pizza-slice"></i> </p>
+                                            }
+
+                                            @if (r.Type == 4)
+                                            {
+                                                <p> <i class="fas fa-ice-cream"></i> </p>
+                                            }
+
+                                            @if (r.Type == 5)
+                                            {
+                                                <p>  <i class="fas fa-apple-alt"></i> </p>
+                                            }
+                                        </div>
+                                    </div>
+
+                                    <div class="img_container">
+                                        <img src="@r.RecepieImages[0].Path" alt="@r.RecepieImages[0].Name" />
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="img_container">
-                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
-                            </div>
-
-                        </div>
-
-                        <div class="recepie">
-                            <div class="name">
-                                <p>Recepie Name</p>
-                            </div>
-
-                            <div class="img_container">
-                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
-                            </div>
-
-                        </div>
-
-                        <div class="recepie">
-                            <div class="name">
-                                <p>Recepie Name</p>
-                            </div>
-
-                            <div class="img_container">
-                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
-                            </div>
-
-                        </div>
-
-
-                        <div class="recepie">
-                            <div class="name">
-                                <div>
-                                    <p>Recepie Name</p>
-                                    <p><i class="fas fa-hamburger"></i></p>
-                                </div>
-                            </div>
-
-                            <div class="img_container">
-                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
-                            </div>
-
-                        </div>
-
-                        <div class="recepie">
-                            <div class="name">
-                                <p>Recepie Name</p>
-                            </div>
-
-                            <div class="img_container">
-                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
-                            </div>
-
-                        </div>
-
-                        <div class="recepie">
-                            <div class="name">
-                                <p>Recepie Name</p>
-                            </div>
-
-                            <div class="img_container">
-                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
-                            </div>
-
-                        </div>
+                            }
+                        }
 
                     </div>
 
@@ -503,7 +467,8 @@
 
 @if (display_recepie_page == true)
 {
-    <section class="single_recepie">
+<section class="single_recepie">
+    <div class="single_recepie_background_cover">
         <div class="single_recepie_container">
 
             <div class="gallery">
@@ -611,7 +576,8 @@
 
 
         </div>
-    </section>
+    </div>
+</section>
 }
 
 
