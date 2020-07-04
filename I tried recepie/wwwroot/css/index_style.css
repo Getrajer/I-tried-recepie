@@ -545,3 +545,144 @@ label, textarea, p, h1, h2, h3, h4, h5, input{
 }
 
 /*End of new reciepe*/
+
+/*Single recepie display*/
+.single_recepie {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 5em;
+}
+
+.single_recepie .single_recepie_container{
+    width:100%;
+    max-width: 900px;
+}
+
+.single_recepie img{
+    width:100%;
+    height:500px;
+}
+
+.single_recepie .gallery_container{
+    display:grid;
+    grid-template-columns: 85% 15%;
+    position:relative;
+}
+
+.single_recepie .small_info{
+    display:flex;
+    justify-content:center;
+    align-content:center;
+    align-items:center;
+    background-color: black;
+    color:white;
+    text-align:center;
+}
+
+.single_recepie .small_info p{
+    padding: 0.5em 0;
+    font-weight:600;
+}
+
+.single_recepie .description{
+    background-color: black;
+    padding:1em 2em;
+    color:white;
+}
+
+.single_recepie .description .title{
+    padding:1em 0;
+    text-align:center;
+}
+
+.single_recepie .steps_ingredients{
+    display:grid;
+    grid-template-columns: 30% 70%;
+}
+
+.single_recepie .ingredients{
+    padding:1em 2em;
+    background-color:black;
+    color:#f1f1f1;
+}
+
+.single_recepie .ingredients .title{
+    padding:1em 0;
+    color:white;
+}
+
+.single_recepie .ingredients p{
+    padding: 0.5em 0;
+    border-bottom: 1px solid white;
+}
+
+.single_recepie .main_img_containe{
+    position:relative;
+}
+
+.single_recepie .left_img_btn{
+    background-color:transparent;
+    color:white;
+    position:absolute;
+    top:0;
+    height:100%;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-content:center;
+    align-items:center;
+    font-size:2rem;
+    padding: 0 0.3em;
+
+    transition: 0.5s background-color;
+}
+
+.single_recepie .left_img_btn:hover{
+    background-color:rgba(0, 0, 0, 0.55);
+}
+
+.single_recepie .right_img_btn{
+    background-color:transparent;
+    color:white;
+    position:absolute;
+    top:0;
+    right:15%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-content:center;
+    align-items:center;
+    font-size:2rem;
+    padding: 0 0.3em;
+    cursor:pointer;
+
+    transition: 0.5s background-color;
+}
+
+.single_recepie .right_img_btn:hover{
+    background-color:rgba(0, 0, 0, 0.55);
+}
+
+.single_recepie .methods{
+    padding:1em 2em;
+}
+
+.single_recepie .methods .title{
+    text-align:center;
+    padding:1em 0;
+}
+
+.single_recepie .method{
+    padding:0.5em 0;
+}
+
+.single_recepie .methods h3{
+    font-size:1.3rem;
+    text-transform: uppercase;
+    letter-spacing:5px;
+    padding:0.3em 0;
+}
+
+/*End of single recepie display*/

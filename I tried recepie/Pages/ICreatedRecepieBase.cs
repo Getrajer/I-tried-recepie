@@ -205,6 +205,11 @@ namespace I_tried_recepie.Pages
         protected Recepie current_recepie = new Recepie();
 
         /// <summary>
+        /// Will showcase image of the current recepie in gallery
+        /// </summary>
+        protected Image current_recepie_image = new Image();
+
+        /// <summary>
         /// This will contain all ingredients for new recepie | Max Count = 100
         /// </summary>
         protected List<Ingredient> ingredients = new List<Ingredient>();
@@ -499,7 +504,7 @@ namespace I_tried_recepie.Pages
             //Add Photos to the list
             for(int i = 0; i < lines_photos.Count; i++)
             {
-                if(counter == 0)
+                if(counter == 0 && lines_photos[i] != "END")
                 {
                     Image image = new Image();
                     Recepies[id].RecepieImages.Add(image);
@@ -507,19 +512,19 @@ namespace I_tried_recepie.Pages
                     Recepies[id].RecepieImages[Recepies[id].RecepieImages.Count - 1].Path = lines_photos[i];
                 }
 
-                if(counter == 1)
+                if(counter == 1 && lines_photos[i] != "END")
                 {
                     Recepies[id].RecepieImages[Recepies[id].RecepieImages.Count - 1].Name = lines_photos[i];
                 }
 
-                if(counter == 2)
-                {
-                    counter = 0;
-                }
 
-                if(lines_photos[i] != "END")
+                if(lines_photos[i] != "END" && counter != 1)
                 {
                     counter++;
+                }
+                else if (lines_photos[i] != "END" && counter == 1)
+                {
+                    counter = 0;
                 }
 
                 if (lines_photos[i] == "END")
@@ -596,8 +601,48 @@ namespace I_tried_recepie.Pages
             }
 
             current_recepie = Recepies[0];
+            current_recepie_image = Recepies[0].RecepieImages[0];
         }
 
+
+        #region Current Recepie Functions
+        /// <summary>
+        /// Will show next image in recepie gallery
+        /// </summary>
+        public void NextImage()
+        {
+            if(current_recepie.RecepieImages.Count > 0)
+            {
+                if(current_recepie_image.Id != current_recepie.RecepieImages.Count - 1)
+                {
+                    current_recepie_image = current_recepie.RecepieImages[current_recepie_image.Id + 1];
+                }
+                else
+                {
+                    current_recepie_image = current_recepie.RecepieImages[0];
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Will show previous image in recepie gallery
+        /// </summary>
+        public void PreviousImage()
+        {
+            if (current_recepie.RecepieImages.Count > 0)
+            {
+                if (current_recepie_image.Id != 0)
+                {
+                    current_recepie_image = current_recepie.RecepieImages[current_recepie_image.Id + -1];
+                }
+                else
+                {
+                    current_recepie_image = current_recepie.RecepieImages[current_recepie.RecepieImages.Count - 1];
+                }
+            }
+        }
+        #endregion
 
 
         #region Help Functions
