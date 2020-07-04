@@ -144,8 +144,9 @@ namespace I_tried_recepie.Pages
         #endregion
 
         #region Functions and variables for toglleying websites
-        protected bool main_page = true;
+        protected bool main_page = false;
         protected bool create_recepie_page = false;
+        protected bool display_recepie_page = true;
 
 
         /// <summary>
@@ -155,6 +156,7 @@ namespace I_tried_recepie.Pages
         {
             main_page = false;
             create_recepie_page = false;
+            display_recepie_page = true;
 
             ScrollTop();
         }
@@ -177,6 +179,16 @@ namespace I_tried_recepie.Pages
             create_recepie_page = true;
         }
 
+        /// <summary>
+        /// Will open single recepie page
+        /// </summary>
+        public void OpenRecepiePage(int Id)
+        {
+            CloseAllPages();
+            display_recepie_page = true;
+            current_recepie = Recepies[Id];
+        }
+
         #endregion
 
         #region Create Recepie
@@ -186,6 +198,11 @@ namespace I_tried_recepie.Pages
         protected int creator_recepie_rating = 0;
         protected int user_rating = 0;
         protected int new_type;
+
+        /// <summary>
+        /// This object will store current recepie for display(single recepie div)
+        /// </summary>
+        protected Recepie current_recepie = new Recepie();
 
         /// <summary>
         /// This will contain all ingredients for new recepie | Max Count = 100
@@ -577,7 +594,10 @@ namespace I_tried_recepie.Pages
                     id++;
                 }
             }
+
+            current_recepie = Recepies[0];
         }
+
 
 
         #region Help Functions
