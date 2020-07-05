@@ -6,6 +6,41 @@
     <link href="../css/index_style.css" rel="stylesheet" />
 </head>
 
+
+<div class="bank_app_nav">
+    <div class="nav_links">
+        <div class="toggle_button">
+
+            @if (show_btn_nav)
+            {
+                <button @onclick="ToggleNav">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+            }
+            else
+            {
+                <button @onclick="ToggleNav">
+                    X
+                </button>
+            }
+
+
+
+
+        </div>
+
+        <div class="nav_container @nav_toggle">
+
+            <div class="link">
+                <button @onclick="OpenMainPage">Main Page</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
 @if (main_page == true)
 {
     <section class="tried_recepie">
@@ -18,7 +53,7 @@
                     </div>
 
                     <div class="description">
-                        <p>Vaush, you've actually changed my mind on 2 things, hormone blockers and the legitimacy of considering non-binary people as trans. You've made strong arguments backed by evidence and I've had no choice but to concede my earlier held beliefs.</p>
+                        <p>If you want to master recipie this app is for you. Create recipie, rate yourself and uptade your progress with editing. If you are satisfied and you want no longer change recipie mark it as finished. If you no longer want to try with recipie mark it as abandon.</p>
                     </div>
                 </div>
             </header>
@@ -118,7 +153,7 @@
                     </div>
 
                     <div class="open_all">
-                        <button @onclick="OpenAllRecepies">See all</button>
+                        <button @onclick="OpenFinishedRecipies">See all</button>
                     </div>
 
                 </div>
@@ -179,7 +214,7 @@
                     </div>
 
                     <div class="open_all">
-                        <button @onclick="OpenAllRecepies">See all</button>
+                        <button @onclick="OpenOngoingRecipies">See all</button>
                     </div>
 
                 </div>
@@ -238,7 +273,7 @@
                     </div>
 
                     <div class="open_all">
-                        <button @onclick="OpenAllRecepies">See all</button>
+                        <button @onclick="OpenAbandonRecipies">See all</button>
                     </div>
 
                 </div>

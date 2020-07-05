@@ -144,13 +144,13 @@ namespace I_tried_recepie.Pages
         #endregion
 
         #region Functions and variables for toglleying websites
-        protected bool main_page = false;
+        protected bool main_page = true;
         protected bool create_recipe_page = false;
         protected bool display_recipe_page = false;
         protected bool display_recipe_edit_page = false;
 
         //Will show all recepies and filter them
-        protected bool display_all_recipies = true;
+        protected bool display_all_recipies = false;
         protected bool ongoing_recipies = false;
         protected bool finished_recipies = false;
         protected bool abandoned_recipies = false;
@@ -827,6 +827,25 @@ namespace I_tried_recepie.Pages
         {
             await JSRuntime.InvokeAsync<string>("ScrollTopJS");
 
+        }
+        #endregion
+
+
+        #region navigation functions
+        protected string nav_toggle = "";
+        protected bool show_btn_nav = true;
+        public void ToggleNav()
+        {
+            if (nav_toggle == "")
+            {
+                nav_toggle = "nav_container_toggled";
+                show_btn_nav = false;
+            }
+            else
+            {
+                nav_toggle = "";
+                show_btn_nav = true;
+            }
         }
         #endregion
     }
