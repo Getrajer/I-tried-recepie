@@ -297,7 +297,7 @@ label, textarea, p, h1, h2, h3, h4, h5, input{
 
 .tried_recepie .ongoing_recepies .recepies_list img{
     width:100%;
-    height:300px;
+    height:280px;
 }
 
 .tried_recepie .ongoing_recepies .open_all button{
@@ -697,3 +697,8 @@ label, textarea, p, h1, h2, h3, h4, h5, input{
 }
 
 /*End of single recepie display*/
+
+/*Edit recepie*/
+
+
+/*End of edit recepie*/

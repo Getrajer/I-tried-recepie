@@ -25,7 +25,7 @@
 
             <section class="new_recepie_button_container">
 
-                <div @onclick="OpenCreateRecepiePage" class="new_recepie_button">
+                <div @onclick="OpenCreateRecipePage" class="new_recepie_button">
                     <p>Create Recepie</p>
 
 
@@ -134,7 +134,7 @@
                         {
                             @foreach (var r in latest_6_ongoing_recepies)
                             {
-                                <div @onclick="@(e => OpenRecepiePage(r.Id))" class="recepie">
+                                <div @onclick="@(e => OpenRecipePage(r.Id))" class="recepie">
                                     <div class="name">
                                         <div>
                                             <p>@r.Name</p>
@@ -280,7 +280,7 @@
 }
 
 
-@if (create_recepie_page == true)
+@if (create_recipe_page == true)
 {
     <section class="create_recepie">
         <div class="create_recepie_container">
@@ -347,11 +347,6 @@
                                 </button>
                             </div>
                         }
-                    </div>
-
-                    <div class="input_container">
-                        <label>Rate how you liked it (1-10)</label>
-                        <input @bind="creator_recepie_rating" min="0" max="10" placeholder="From 1-10" />
                     </div>
 
                     <div class="ingredients">
@@ -465,7 +460,7 @@
     </section>
 }
 
-@if (display_recepie_page == true)
+@if (display_recipe_page == true)
 {
 <section class="single_recepie">
     <div class="single_recepie_background_cover">
@@ -573,11 +568,234 @@
                     }
                 </div>
             </div>
+        </div>
 
-
+        <div class="edit_button">
+            <button @onclick="OpenEditRecipe">Edit</button>
         </div>
     </div>
 </section>
+}
+
+@if(display_recipe_edit_page == true)
+{
+    <section class="edit_recipe_page">
+        <div class="edit_recipe_page_container">
+            <section class="create_recepie">
+                <div class="create_recepie_container">
+
+                    <div class="reciepie_form">
+                        <div class="reciepie_form_container">
+
+                            <div class="title">
+                                <h2>Edit reciepe</h2>
+                            </div>
+
+                            <div class="input_container">
+                                <label>Reciepe name</label>
+                                <input @bind="edit_recipe_object.Name" placeholder="Name" />
+                            </div>
+
+                            <div class="input_container">
+                                <label>Description</label>
+                                <textarea @bind="edit_recipe_object.Description" placeholder="Short overall description"></textarea>
+                            </div>
+
+                            <div class="input_container">
+                                <label>Your Rating<span class="small">(How you liked this dish (1 - 10))</span></label>
+                            </div>
+
+                            <div class="rating_container">
+                                @foreach (var r in ratings)
+                                {
+                                    @if (edit_recipe_object.Rating == r.RatePoint)
+                                    {
+                                        <div class="rating">
+                                            <button @onclick="@(e => EditChangeRating(r.RatePoint))" class="@edit_rate_base">@r.RatePoint</button>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="rating">
+                                            <button @onclick="@(e => EditChangeRating(r.RatePoint))" class="@r.Class">@r.RatePoint</button>
+                                        </div>
+                                    }
+                                }
+                            </div>
+
+                            <div class="input_container">
+                                <label>Type of food<span class="small">(Breakfast | Lunch | Dinner | Dessert | Snack)</span></label>
+                            </div>
+
+                            <div class="rating_container">
+                                @foreach (var t in types)
+                                {
+                                <div class="rating">
+                                    @if (edit_recipe_object.Type == t.TypeNumber)
+                                    {
+                                        <button @onclick="@(e => EditChangeType(t.TypeNumber))" class="@edit_type_base">
+                                            @if (t.TypeNumber == 0)
+                                            {
+                                                <i class="fas fa-bacon"></i>
+                                            }
+                                            else if (t.TypeNumber == 1)
+                                            {
+                                                <i class="fas fa-utensils"></i>
+                                            }
+                                            else if (t.TypeNumber == 2)
+                                            {
+                                                <i class="fas fa-pizza-slice"></i>
+                                            }
+                                            else if (t.TypeNumber == 3)
+                                            {
+                                                <i class="fas fa-ice-cream"></i>
+                                            }
+                                            else if (t.TypeNumber == 4)
+                                            {
+                                                <i class="fas fa-apple-alt"></i>
+                                            }
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button @onclick="@(e => EditChangeType(t.TypeNumber))" class="@t.Class">
+                                            @if (t.TypeNumber == 0)
+                                            {
+                                                <i class="fas fa-bacon"></i>
+                                            }
+                                            else if (t.TypeNumber == 1)
+                                            {
+                                                <i class="fas fa-utensils"></i>
+                                            }
+                                            else if (t.TypeNumber == 2)
+                                            {
+                                                <i class="fas fa-pizza-slice"></i>
+                                            }
+                                            else if (t.TypeNumber == 3)
+                                            {
+                                                <i class="fas fa-ice-cream"></i>
+                                            }
+                                            else if (t.TypeNumber == 4)
+                                            {
+                                                <i class="fas fa-apple-alt"></i>
+                                            }
+                                        </button>
+                                    }
+
+                                </div>
+                                }
+                            </div>
+                            <div class="ingredients">
+                                <div class="title">
+                                    <h3>Ingredients</h3>
+                                </div>
+
+                                @foreach (var i in edit_recipe_object.IngredientsList)
+                                {
+                                    <div class="ingredient">
+                                        <div class="input_container">
+                                            <label>Name</label>
+                                            <input @bind="i.Name" placeholder="Ex beef/salt" />
+                                        </div>
+
+                                        <div class="input_container">
+                                            <label>Ammount</label>
+                                            <input min="0" @bind="i.Ammount" placeholder="Ex 250/1" />
+                                        </div>
+
+                                        <div class="input_container">
+                                            <label>Ammount Name</label>
+                                            <input @bind="i.AmmountName" placeholder="Ex grams/spoons" />
+                                        </div>
+                                    </div>
+                                }
+
+
+                                <div class="button_container">
+                                    <button @onclick="AddNewIngredient">Add next</button>
+                                </div>
+                            </div>
+
+                            <div class="creation_process">
+                                <div class="title">
+                                    <h3>Explain creation process</h3>
+                                </div>
+
+                                <div class="creation_process_container">
+
+                                    @foreach (var s in edit_recipe_object.DescriptionsList)
+                                    {
+                                        <div class="step">
+                                            <h4>Step @(s.Id + 1)</h4>
+
+                                            <div class="input_time">
+                                                <div class="input_container">
+                                                    <label>Time</label>
+                                                    <input @bind="s.Time" />
+                                                </div>
+
+                                                <div class="input_container">
+                                                    <label>Time name(Ex min/hrs)</label>
+                                                    <input @bind="s.Name" />
+                                                </div>
+                                            </div>
+
+                                            <div class="input_container">
+                                                <label>Description</label>
+                                                <textarea @bind="s.Text" placeholder="Step 1 description"></textarea>
+                                            </div>
+                                        </div>
+                                    }
+
+                                    <div class="button_container">
+                                        <button @onclick="AddNewStep">Add next step</button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="add_images">
+
+                                @foreach (var i in edit_recipe_object.RecepieImages)
+                                {
+                                    <div class="image_input">
+                                        <div class="input_container">
+                                            <label>Path</label>
+                                            <input @bind="i.Path" />
+                                            <label class="small">Put link to image/In normal implementation you can put img from drive</label>
+                                        </div>
+
+                                        <div class="input_container">
+                                            <label>Name</label>
+                                            <input @bind="i.Name" />
+                                        </div>
+
+                                        <div class="preview">
+                                            <img src="@i.Path" alt="@i.Name" />
+                                        </div>
+
+
+                                    </div>
+
+                                }
+
+                                <div class="button_container">
+                                    <button @onclick="AddNewImage">Add Next</button>
+                                </div>
+
+                            </div>
+
+                            <div class="button_container add_new_button">
+                                <button>Add new recepie</button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </section>
 }
 
 

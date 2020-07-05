@@ -145,9 +145,14 @@ namespace I_tried_recepie.Pages
 
         #region Functions and variables for toglleying websites
         protected bool main_page = true;
-        protected bool create_recepie_page = false;
-        protected bool display_recepie_page = false;
+        protected bool create_recipe_page = false;
+        protected bool display_recipe_page = false;
+        protected bool display_recipe_edit_page = false;
 
+        /// <summary>
+        /// Object for editing recipe
+        /// </summary>
+        protected Recepie edit_recipe_object = new Recepie();
 
         /// <summary>
         /// Will close all pages views
@@ -155,8 +160,9 @@ namespace I_tried_recepie.Pages
         public void CloseAllPages()
         {
             main_page = false;
-            create_recepie_page = false;
-            display_recepie_page = false;
+            create_recipe_page = false;
+            display_recipe_page = false;
+            display_recipe_edit_page = false;
 
             ScrollTop();
         }
@@ -173,20 +179,32 @@ namespace I_tried_recepie.Pages
         /// <summary>
         /// Will open create recepie page
         /// </summary>
-        public void OpenCreateRecepiePage()
+        public void OpenCreateRecipePage()
         {
             CloseAllPages();
-            create_recepie_page = true;
+            create_recipe_page = true;
         }
 
         /// <summary>
         /// Will open single recepie page
         /// </summary>
-        public void OpenRecepiePage(int Id)
+        public void OpenRecipePage(int Id)
         {
             CloseAllPages();
-            display_recepie_page = true;
+            display_recipe_page = true;
             current_recepie = Recepies[Id];
+        }
+
+        /// <summary>
+        /// Will open edit reciep page
+        /// </summary>
+        public void OpenEditRecipe()
+        {
+            CloseAllPages();
+            edit_type_base = "checked_rating";
+            edit_rate_base = "checked_rating";
+            edit_recipe_object = current_recepie;
+            display_recipe_edit_page = true;
         }
 
         #endregion
@@ -668,6 +686,42 @@ namespace I_tried_recepie.Pages
         }
         #endregion
 
+
+        #region Editing functions
+        //This object will apply class for checkbox of rating before edit
+        protected string edit_rate_base = "checked_rating";
+        protected string edit_type_base = "checked_rating";
+
+
+        /// <summary>
+        /// Will change rating how user liked its recepie
+        /// </summary>
+        public void EditChangeRating(int rating)
+        {
+            for (int i = 0; i < ratings.Count; i++)
+            {
+                ratings[i].Class = "";
+            }
+            edit_recipe_object.Rating = rating;
+            ratings[rating - 1].Class = "checked_rating";
+        }
+
+
+        /// <summary>
+        /// Will type of the food 
+        /// </summary>
+        public void EditChangeType(int type)
+        {
+            for (int i = 0; i < types.Count; i++)
+            {
+                types[i].Class = "";
+            }
+            edit_type_base = "";
+            types[type].Class = "checked_rating";
+            new_type = type;
+        }
+
+        #endregion
 
         #region Help Functions
         private async Task ScrollTop()
