@@ -75,46 +75,50 @@
 
                     <div class="recepies_list">
 
-                        <div class="recepie">
-                            <div class="name">
-                                <div>
-                                    <p>Recepie Name</p>
-                                    <p><i class="fas fa-hamburger"></i></p>
+
+                        @foreach (var r in latest_3_finished_recepies)
+                        {
+                            <div @onclick="@(e => OpenRecipePage(r.Id))" class="recepie">
+                                <div class="name">
+                                    <div>
+                                        <p>@r.Name</p>
+                                        @if (r.Type == 1)
+                                        {
+                                            <p><i class="fas fa-bacon"></i></p>
+                                        }
+
+                                        @if (r.Type == 2)
+                                        {
+                                            <p><i class="fas fa-utensils"></i></p>
+                                        }
+
+                                        @if (r.Type == 3)
+                                        {
+                                            <p><i class="fas fa-pizza-slice"></i> </p>
+                                        }
+
+                                        @if (r.Type == 4)
+                                        {
+                                            <p> <i class="fas fa-ice-cream"></i> </p>
+                                        }
+
+                                        @if (r.Type == 5)
+                                        {
+                                            <p>  <i class="fas fa-apple-alt"></i> </p>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="img_container">
+                                    <img src="@r.RecepieImages[0].Path" alt="@r.RecepieImages[0].Name" />
                                 </div>
                             </div>
-
-                            <div class="img_container">
-                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
-                            </div>
-
-                        </div>
-
-                        <div class="recepie">
-                            <div class="name">
-                                <p>Recepie Name</p>
-                            </div>
-
-                            <div class="img_container">
-                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
-                            </div>
-
-                        </div>
-
-                        <div class="recepie">
-                            <div class="name">
-                                <p>Recepie Name</p>
-                            </div>
-
-                            <div class="img_container">
-                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
-                            </div>
-
-                        </div>
+                        }
 
                     </div>
 
                     <div class="open_all">
-                        <button>See all</button>
+                        <button @onclick="OpenAllRecepies">See all</button>
                     </div>
 
                 </div>
@@ -137,7 +141,7 @@
                                 <div @onclick="@(e => OpenRecipePage(r.Id))" class="recepie">
                                     <div class="name">
                                         <div>
-                                            <p>@r.Name</p>
+                                            <p>@r.Name @r.Id</p>
                                             @if (r.Type == 1)
                                             {
                                                 <p><i class="fas fa-bacon"></i></p>
@@ -175,7 +179,7 @@
                     </div>
 
                     <div class="open_all">
-                        <button>See all</button>
+                        <button @onclick="OpenAllRecepies">See all</button>
                     </div>
 
                 </div>
@@ -192,83 +196,49 @@
 
                     <div class="recepies_list">
 
-                        <div class="recepie">
-                            <div class="name">
-                                <div>
-                                    <p>Recepie Name</p>
-                                    <p><i class="fas fa-hamburger"></i></p>
+                        @foreach (var r in latest_6_abandoned_recepies)
+                        {
+                            <div @onclick="@(e => OpenRecipePage(r.Id))" class="recepie">
+                                <div class="name">
+                                    <div>
+                                        <p>@r.Name @r.Id</p>
+                                        @if (r.Type == 1)
+                                        {
+                                            <p><i class="fas fa-bacon"></i></p>
+                                        }
+
+                                        @if (r.Type == 2)
+                                        {
+                                            <p><i class="fas fa-utensils"></i></p>
+                                        }
+
+                                        @if (r.Type == 3)
+                                        {
+                                            <p><i class="fas fa-pizza-slice"></i> </p>
+                                        }
+
+                                        @if (r.Type == 4)
+                                        {
+                                            <p> <i class="fas fa-ice-cream"></i> </p>
+                                        }
+
+                                        @if (r.Type == 5)
+                                        {
+                                            <p>  <i class="fas fa-apple-alt"></i> </p>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="img_container">
+                                    <img src="@r.RecepieImages[0].Path" alt="@r.RecepieImages[0].Name" />
                                 </div>
                             </div>
-
-                            <div class="img_container">
-                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
-                            </div>
-
-                        </div>
-
-                        <div class="recepie">
-                            <div class="name">
-                                <p>Recepie Name</p>
-                            </div>
-
-                            <div class="img_container">
-                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
-                            </div>
-
-                        </div>
-
-                        <div class="recepie">
-                            <div class="name">
-                                <p>Recepie Name</p>
-                            </div>
-
-                            <div class="img_container">
-                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
-                            </div>
-
-                        </div>
-
-
-                        <div class="recepie">
-                            <div class="name">
-                                <div>
-                                    <p>Recepie Name</p>
-                                    <p><i class="fas fa-hamburger"></i></p>
-                                </div>
-                            </div>
-
-                            <div class="img_container">
-                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
-                            </div>
-
-                        </div>
-
-                        <div class="recepie">
-                            <div class="name">
-                                <p>Recepie Name</p>
-                            </div>
-
-                            <div class="img_container">
-                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
-                            </div>
-
-                        </div>
-
-                        <div class="recepie">
-                            <div class="name">
-                                <p>Recepie Name</p>
-                            </div>
-
-                            <div class="img_container">
-                                <img src="https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" />
-                            </div>
-
-                        </div>
+                        }
 
                     </div>
 
                     <div class="open_all">
-                        <button>See all</button>
+                        <button @onclick="OpenAllRecepies">See all</button>
                     </div>
 
                 </div>
@@ -289,7 +259,7 @@
                 <div class="reciepie_form_container">
 
                     <div class="title">
-                        <h2>Create reciepe</h2>
+                        <h2>Create recipe</h2>
                     </div>
 
                     <div class="input_container">
@@ -469,13 +439,18 @@
             <div class="gallery">
                 <div class="gallery_container">
                     <div class="main_img_container">
-                        <div @onclick="PreviousImage" class="left_img_btn">
-                            <p>&lt;</p>
-                        </div>
 
-                        <div @onclick="NextImage" class="right_img_btn">
-                            <p>&gt;</p>
-                        </div>
+                        @if (current_recepie.RecepieImages.Count > 1)
+                        {
+                            <div @onclick="PreviousImage" class="left_img_btn">
+                                <p>&lt;</p>
+                            </div>
+
+                            <div @onclick="NextImage" class="right_img_btn">
+                                <p>&gt;</p>
+                            </div>
+                        }
+
                         <img src="@current_recepie_image.Path" alt="@current_recepie_image.Name" />
                     </div>
 
@@ -588,7 +563,7 @@
                         <div class="reciepie_form_container">
 
                             <div class="title">
-                                <h2>Edit reciepe</h2>
+                                <h2>Edit recipe</h2>
                             </div>
 
                             <div class="input_container">
@@ -794,6 +769,207 @@
 
                 </div>
             </section>
+        </div>
+    </section>
+}
+
+@if(display_all_recipies == true)
+{
+    <section class="all_recipies">
+        <div class="all_recipies_container">
+
+            <div class="recepies_toggler">
+                <div @onclick="OpenAllRecepies" class="display_btn">
+                    <p>Display All recipes</p>
+                </div>
+
+                <div @onclick="OpenOngoingRecipies" class="display_btn">
+                    <p>Display Ongoing recipes</p>
+                </div>
+
+                <div @onclick="OpenFinishedRecipies" class="display_btn">
+                    <p>Display Finished recipes</p>
+                </div>
+
+                <div @onclick="OpenAbandonRecipies" class="display_btn">
+                    <p>Display Abandoned recipes</p>
+                </div>
+            </div>
+
+            <div class="display_recepies">
+                <div class="display_recepies_container">
+                    @foreach (var r in Recepies)
+                    {
+                        @if (finished_recipies == true)
+                        {
+                            @if (r.Finished == true)
+                            {
+                                <div @onclick="@(e => OpenRecipePage(r.Id))" class="recepie">
+                                    <div class="name">
+                                        <div>
+                                            <p>@r.Name</p>
+                                            @if (r.Type == 1)
+                                            {
+                                                <p><i class="fas fa-bacon"></i></p>
+                                            }
+
+                                            @if (r.Type == 2)
+                                            {
+                                                <p><i class="fas fa-utensils"></i></p>
+                                            }
+
+                                            @if (r.Type == 3)
+                                            {
+                                                <p><i class="fas fa-pizza-slice"></i> </p>
+                                            }
+
+                                            @if (r.Type == 4)
+                                            {
+                                                <p> <i class="fas fa-ice-cream"></i> </p>
+                                            }
+
+                                            @if (r.Type == 5)
+                                            {
+                                                <p>  <i class="fas fa-apple-alt"></i> </p>
+                                            }
+                                        </div>
+                                    </div>
+
+                                    <div class="img_container">
+                                        <img src="@r.RecepieImages[0].Path" alt="@r.RecepieImages[0].Name" />
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                        @if (abandoned_recipies == true)
+                        {
+                            @if (r.Abandon == true)
+                            {
+                                <div @onclick="@(e => OpenRecipePage(r.Id))" class="recepie">
+                                    <div class="name">
+                                        <div>
+                                            <p>@r.Name</p>
+                                            @if (r.Type == 1)
+                                            {
+                                                <p><i class="fas fa-bacon"></i></p>
+                                            }
+
+                                            @if (r.Type == 2)
+                                            {
+                                                <p><i class="fas fa-utensils"></i></p>
+                                            }
+
+                                            @if (r.Type == 3)
+                                            {
+                                                <p><i class="fas fa-pizza-slice"></i> </p>
+                                            }
+
+                                            @if (r.Type == 4)
+                                            {
+                                                <p> <i class="fas fa-ice-cream"></i> </p>
+                                            }
+
+                                            @if (r.Type == 5)
+                                            {
+                                                <p>  <i class="fas fa-apple-alt"></i> </p>
+                                            }
+                                        </div>
+                                    </div>
+
+                                    <div class="img_container">
+                                        <img src="@r.RecepieImages[0].Path" alt="@r.RecepieImages[0].Name" />
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                        @if (ongoing_recipies == true)
+                        {
+                            @if (r.Ongoing == true)
+                            {
+                                <div @onclick="@(e => OpenRecipePage(r.Id))" class="recepie">
+                                    <div class="name">
+                                        <div>
+                                            <p>@r.Name</p>
+                                            @if (r.Type == 1)
+                                            {
+                                                <p><i class="fas fa-bacon"></i></p>
+                                            }
+
+                                            @if (r.Type == 2)
+                                            {
+                                                <p><i class="fas fa-utensils"></i></p>
+                                            }
+
+                                            @if (r.Type == 3)
+                                            {
+                                                <p><i class="fas fa-pizza-slice"></i> </p>
+                                            }
+
+                                            @if (r.Type == 4)
+                                            {
+                                                <p> <i class="fas fa-ice-cream"></i> </p>
+                                            }
+
+                                            @if (r.Type == 5)
+                                            {
+                                                <p>  <i class="fas fa-apple-alt"></i> </p>
+                                            }
+                                        </div>
+                                    </div>
+
+                                    <div class="img_container">
+                                        <img src="@r.RecepieImages[0].Path" alt="@r.RecepieImages[0].Name" />
+                                    </div>
+                                </div>
+
+                            }
+                        }
+
+
+                        @if (ongoing_recipies == false && abandoned_recipies == false && finished_recipies == false)
+                        {
+                            <div @onclick="@(e => OpenRecipePage(r.Id))" class="recepie">
+                                <div class="name">
+                                    <div>
+                                        <p>@r.Name</p>
+                                        @if (r.Type == 1)
+                                        {
+                                            <p><i class="fas fa-bacon"></i></p>
+                                        }
+
+                                        @if (r.Type == 2)
+                                        {
+                                            <p><i class="fas fa-utensils"></i></p>
+                                        }
+
+                                        @if (r.Type == 3)
+                                        {
+                                            <p><i class="fas fa-pizza-slice"></i> </p>
+                                        }
+
+                                        @if (r.Type == 4)
+                                        {
+                                            <p> <i class="fas fa-ice-cream"></i> </p>
+                                        }
+
+                                        @if (r.Type == 5)
+                                        {
+                                            <p>  <i class="fas fa-apple-alt"></i> </p>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="img_container">
+                                    <img src="@r.RecepieImages[0].Path" alt="@r.RecepieImages[0].Name" />
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+
         </div>
     </section>
 }

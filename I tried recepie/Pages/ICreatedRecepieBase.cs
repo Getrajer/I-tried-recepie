@@ -144,10 +144,16 @@ namespace I_tried_recepie.Pages
         #endregion
 
         #region Functions and variables for toglleying websites
-        protected bool main_page = true;
+        protected bool main_page = false;
         protected bool create_recipe_page = false;
         protected bool display_recipe_page = false;
         protected bool display_recipe_edit_page = false;
+
+        //Will show all recepies and filter them
+        protected bool display_all_recipies = true;
+        protected bool ongoing_recipies = false;
+        protected bool finished_recipies = false;
+        protected bool abandoned_recipies = false;
 
         /// <summary>
         /// Object for editing recipe
@@ -163,8 +169,43 @@ namespace I_tried_recepie.Pages
             create_recipe_page = false;
             display_recipe_page = false;
             display_recipe_edit_page = false;
+            display_all_recipies = false;
+
+            abandoned_recipies = false;
+            finished_recipies = false;
+            ongoing_recipies = false;
 
             ScrollTop();
+        }
+
+        public void OpenOngoingRecipies()
+        {
+            CloseAllPages();
+            ongoing_recipies = true;
+            display_all_recipies = true;
+        }
+
+        public void OpenFinishedRecipies()
+        {
+            CloseAllPages();
+            finished_recipies = true;
+            display_all_recipies = true;
+        }
+
+        public void OpenAbandonRecipies()
+        {
+            CloseAllPages();
+            abandoned_recipies = true;
+            display_all_recipies = true;
+        }
+
+        /// <summary>
+        /// Will open window with all recepies
+        /// </summary>
+        public void OpenAllRecepies()
+        {
+            CloseAllPages();
+            display_all_recipies = true;
         }
 
         /// <summary>
@@ -191,8 +232,14 @@ namespace I_tried_recepie.Pages
         public void OpenRecipePage(int Id)
         {
             CloseAllPages();
-            display_recipe_page = true;
             current_recepie = Recepies[Id];
+
+            if (current_recepie.RecepieImages.Count > 0)
+            {
+                current_recepie_image = current_recepie.RecepieImages[0];
+            }
+
+            display_recipe_page = true;
         }
 
         /// <summary>
@@ -204,6 +251,9 @@ namespace I_tried_recepie.Pages
             edit_type_base = "checked_rating";
             edit_rate_base = "checked_rating";
             edit_recipe_object = current_recepie;
+
+
+
             display_recipe_edit_page = true;
         }
 
@@ -238,7 +288,7 @@ namespace I_tried_recepie.Pages
         protected List<DescriptionProcess> steps = new List<DescriptionProcess>();
 
         /// <summary>
-        /// Will hold images for the new reciepe
+        /// Will hold images for the new recipe
         /// </summary>
         protected List<Image> images = new List<Image>();
 
@@ -266,6 +316,16 @@ namespace I_tried_recepie.Pages
         /// Latest 6 ongoing recepies of the user displayed in main window
         /// </summary>
         protected List<Recepie> latest_6_ongoing_recepies = new List<Recepie>();
+
+        /// <summary>
+        /// Latest 3 finished recepies of the user displayed in main window
+        /// </summary>
+        protected List<Recepie> latest_3_finished_recepies = new List<Recepie>();
+
+        /// <summary>
+        /// Latest 6 abandoned recepies of the user displayed in main window
+        /// </summary>
+        protected List<Recepie> latest_6_abandoned_recepies = new List<Recepie>();
 
         /// <summary>
         /// Will reset variables for input
@@ -441,6 +501,7 @@ namespace I_tried_recepie.Pages
             for(int i = 0; i < number_of_objects; i++)
             {
                 Recepie r = new Recepie();
+                r.Id = i;
                 Recepies.Add(r);
             }
 
@@ -623,8 +684,6 @@ namespace I_tried_recepie.Pages
                 }
             }
 
-            current_recepie = Recepies[0];
-            current_recepie_image = Recepies[0].RecepieImages[0];
 
             //Load 6 latest ongoing recepies
             counter = 0;
@@ -640,6 +699,46 @@ namespace I_tried_recepie.Pages
                     if (Recepies[i - 1].Ongoing == true)
                     {
                         latest_6_ongoing_recepies.Add(Recepies[i - 1]);
+                        counter++;
+                    }
+                }
+            }
+
+
+            //Load 6 latest ababdoned recepies
+            counter = 0;
+            if (Recepies.Count > 0)
+            {
+                for (int i = Recepies.Count; i != 0; i--)
+                {
+                    if (counter == 6)
+                    {
+                        break;
+                    }
+
+                    if (Recepies[i - 1].Abandon == true)
+                    {
+                        latest_6_abandoned_recepies.Add(Recepies[i - 1]);
+                        counter++;
+                    }
+                }
+            }
+
+
+            //Load 3 latest finished recepies
+            counter = 0;
+            if (Recepies.Count > 0)
+            {
+                for (int i = Recepies.Count; i != 0; i--)
+                {
+                    if (counter == 3)
+                    {
+                        break;
+                    }
+
+                    if (Recepies[i - 1].Finished == true)
+                    {
+                        latest_3_finished_recepies.Add(Recepies[i - 1]);
                         counter++;
                     }
                 }

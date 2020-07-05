@@ -8,6 +8,10 @@ label, textarea, p, h1, h2, h3, h4, h5, input{
     padding:0;
 }
 
+button:focus{
+    outline:unset;
+}
+
 /*Main page*/
 .tried_recepie{
     display:flex;
@@ -350,7 +354,7 @@ label, textarea, p, h1, h2, h3, h4, h5, input{
 /*End of abandoned recepies*/
 /*End of main page*/
 
-/*New reciepe*/
+/*New recipe*/
 .create_recepie{
     display:flex;
     justify-content:center;
@@ -544,7 +548,7 @@ label, textarea, p, h1, h2, h3, h4, h5, input{
     font-weight:700;
 }
 
-/*End of new reciepe*/
+/*End of new recipe*/
 
 /*Single recepie display*/
 .single_recepie {
@@ -698,7 +702,106 @@ label, textarea, p, h1, h2, h3, h4, h5, input{
 
 /*End of single recepie display*/
 
-/*Edit recepie*/
+/*Display recipes*/
+.all_recipies {
+    display: flex;
+    justify-content: center;
+    padding-top:4em;
+}
+
+.all_recipies .all_recipies_container {
+    width: 100%;
+    max-width: 1000px;
+}
 
 
-/*End of edit recepie*/
+.all_recipies .recepies_toggler{
+    margin:1em 0;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.all_recipies .display_btn{
+    background-color:black;
+    padding:1em 0;
+    transition:background-color 0.5s;
+    cursor:pointer;
+    color:white;
+}
+
+.all_recipies .display_btn:hover{
+    background-color:#ffffff;
+    color:black;
+}
+
+
+.all_recipies .recepies_toggler p{
+    text-align:center;
+    font-weight:600;
+}
+
+.all_recipies .display_recepies_container{
+    width:100%;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap:10px;
+}
+
+
+.all_recipies .title{
+    text-align:center;
+    margin-bottom: 3em;
+}
+
+.all_recipies .title h2{
+    font-size:3rem;
+    color:white;
+    font-weight:700;
+    letter-spacing: 10px;
+}
+
+.all_recipies .recepie{
+    position:relative;
+}
+.all_recipies .name{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+
+    display:flex;
+    justify-content:center;
+    align-content:center;
+    align-items:center;
+
+    cursor:pointer;
+    transition: 0.5s;
+
+    background-color:rgba(0, 0, 0, 0.40);
+}
+
+.all_recipies .name p{
+    color:white;
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing:3px;
+    display:block;
+    text-align:center;
+}
+
+.all_recipies .name p i{
+    font-size: 2rem;
+}
+
+.all_recipies .name:hover{
+    background-color:rgba(0, 0, 0, 0.0);
+}
+
+.all_recipies img{
+    width:100%;
+    height:470px;
+}
+
+/*End of display recipes*/
