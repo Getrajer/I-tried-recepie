@@ -605,13 +605,27 @@ button:focus{
 /*End of new recipe*/
 
 /*Single recepie display*/
-.single_recepie {
+.edit_button{
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:1em;
+    height:130px;
+    font-size:2rem;
+    cursor:pointer;
+    transition:0.5s;
+}
 
+.edit_button:hover{
+    color:#F86990;
+}
+
+.single_recepie {
     width: 100%;
     min-height: 100vh;
     background-image: url(../Images/single_food_background.jpg);
-    background-repeat:no-repeat;
-    background-size:cover;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-attachment: fixed;
 }
 
@@ -663,6 +677,10 @@ button:focus{
 .single_recepie .description .title{
     padding:1em 0;
     text-align:center;
+}
+
+.single_recepie .description_container{
+    padding:0.5em 0;
 }
 
 .single_recepie .steps_ingredients{
